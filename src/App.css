@@ -2,33 +2,274 @@
   margin: 0%;
   padding: 0%;
   box-sizing: border-box;
+  font-family: Segoe UI,Helvetica Neue,Helvetica,Lucida Grande,Arial,Ubuntu,Cantarell,Fira Sans,sans-serif;  ;
 }
-#container{
-  background-color: #111b21;
+body{
+  background-image: url("https://phoneky.co.uk/thumbs/wallpapers/2022/p2/abstract/20/wal4ab28.jpg");
+}
+.container{
   height: 100vh;
   width: 100%;
   display: flex;
   text-align: center;
   justify-content: center;
 }
-#logo{
-  height: 200px;
-  width: 200px;
-  align-self: center;
-}
+
 #box{
   margin: auto;
-  height: 350px;
+  height: 300px;
   width: 350px;
-  border: 1px solid #f6f9fa46;
-  display: flex;
+   display: flex;
+  z-index: 2;
   flex-wrap: nowrap;
   text-align: center;
   border-radius: 30px;
+  justify-content: center;
   flex-direction: column;
 }
-#signinbtn{
-  background-color: royalblue;
-  padding: 10px 10px;
+#logo{
+  height: 200px;
+  width: 200px;
+  align-self:center;
+}
+.login-with-google-btn {
+  transition: background-color .3s, box-shadow .3s;
+  align-self: center;
+  width: 220px;
+  padding: 10px 25px 8px 52px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  color: #2d2222;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+  margin-top: 30px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+  transition: ease-in-out .5s;
+
+  &:hover {
+    box-shadow: 0 -1px 0 rgba(57, 159, 243, 0.5), 0 2px 4px rgba(42, 190, 239, 0.458);
+    transform: scale(.95);
+  }
   
+  &:active {
+    background-color: #eeeeee;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 
+      0 -1px 0 rgba(0, 0, 0, .04),
+      0 2px 4px rgba(0, 0, 0, .25),
+      0 0 0 3px #c8dafc;
+  }
+  
+  &:disabled {
+    filter: grayscale(100%);
+    background-color: #ebebeb;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+    cursor: not-allowed;
+  }
+}
+/****************************************Animation******************************/
+.circles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/018/930/746/non_2x/whatsapp-logo-whatsapp-icon-whatsapp-transparent-free-png.png");
+  background-size: cover;
+  z-index: 1;
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+  
+}
+
+.circles li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+  }
+
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+  }
+
+}
+
+
+
+/********************************Chat Container*************************/
+#chatcontainer{
+ height:95vh ;
+ width: 95%;
+ background-color: darkslategrey;
+ margin: auto;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  
+}
+
+.grid-item {
+  border: 1px solid black;
+  height: 95vh;
+  overflow: hidden;
+}
+/***************************************Header1*****************************/
+.header{
+  height: 3.5rem;
+  display: flex;
+  background-color: #ffffff;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/***************************************Contact name*****************************/
+.contact-box{
+  height: 100%;
+  width: 100%;
+  background-color: darkslategrey;
+}
+/***************************************Material Icon*****************************/
+.iconcontainer{
+display: flex;
+gap: 18px;
+padding: 12px 20px;
+}
+
+.options-box{
+  position: absolute;
+  z-index: 1;
+  height: 200px;
+  width: 130px;
+  background-color: darkslategrey;
+  margin-top: 30px;
+  border-radius: 5px;
+  text-align: left;
+  padding: 10px;
+}
+.new-group-box{
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+}
+.option{
+  font-size: 1rem;
+  color:white;
+  align-items: start;
+  padding: 8px;
+  cursor: pointer;
+}
+.contact-list{
+  display: flex;
+  height: 70px;
+  width: 100%;
+  background-color: #ffffff;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all .5s;
+}
+.contact-list:hover{
+ transform: scale(.9);
+ color: darkslategrey;
 }
