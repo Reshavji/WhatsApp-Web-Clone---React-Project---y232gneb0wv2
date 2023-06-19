@@ -199,7 +199,7 @@ body{
 #chatcontainer{
  height:95vh ;
  width: 95%;
- background-color: darkslategrey;
+ background-color: #202c33;
  margin: auto;
 }
 .grid-container {
@@ -219,7 +219,7 @@ body{
 /***************************************Contact name*****************************/
 .contact-box{
   width: 100%;
-  background-color: darkslategrey;}
+  background-color: #202c33;}
 /***************************************Material Icon*****************************/
 .iconcontainer{
 display: flex;
@@ -232,7 +232,7 @@ padding: 12px 20px;
   z-index: 1;
   height: 200px;
   width: 130px;
-  background-color: darkslategrey;
+  background-color: #202c33;
   margin-top: 30px;
   border-radius: 5px;
   text-align: left;
@@ -264,11 +264,11 @@ padding: 12px 20px;
 }
 .contact-list:hover{
  transform: scale(.9);
- color: darkslategrey;
+ color: #202c33;
 }
 
 #message{
-  background-color:#00a884;
+  background-color:#0c8268;
   color: white;
   padding: 2px 20px;
   gap: 10px;
@@ -278,14 +278,14 @@ padding: 12px 20px;
   float:right;
 }
 .grid-item1{
-  border: 1px solid black;
+  border-right: 2px solid black;
   height: 95vh;
   padding: 10px;
   position: relative; 
   /* Added */
 }
 .grid-item2{
-    border: 1px solid black;
+    border: none;
     height: 95vh;
     padding: 10px;
     position: relative;
@@ -294,8 +294,9 @@ padding: 12px 20px;
     flex-direction: column;
 
 }
-#avatar{
-  height: 55px;
+.avatar{
+  height: 50px;
+  border-radius: 50%;
   align-self: center;
 }
 .input-container {
@@ -329,11 +330,11 @@ padding: 12px 20px;
 }
 
 .chat-container::-webkit-scrollbar-thumb {
-  background-color: #888888;
+  background-color: #ffffff;
 }
 
 .chat-container::-webkit-scrollbar-track {
-  background-color: #f2f2f2;
+  background-color: #202c33;
 }
 .chat-history {
   max-height: 100%;
@@ -350,7 +351,7 @@ padding: 12px 20px;
   display:flex ;
   justify-content: flex-end;
   flex-direction: column;
-  scrollbar-color: #00a884 #f2f2f2;
+  scrollbar-color: #202c33 #f2f2f2;
   justify-content: flex-end !important;
 }
 
@@ -358,8 +359,9 @@ padding: 12px 20px;
   margin-bottom: 10px;
   background-color: #00a884;
   color: white;
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 5px 0 5px 5px;
+  padding: 5px 12px;
+  font-weight: 600;
   display: inline-block;
   word-wrap: break-word;
   word-break: break-all;

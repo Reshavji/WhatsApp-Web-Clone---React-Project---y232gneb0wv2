@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-
+import MicIcon from '@mui/icons-material/Mic';
 const ChatBox = () => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
@@ -47,10 +47,10 @@ const ChatBox = () => {
           type="text"
           value={message}
           onChange={handleInputChange}
-          onKeyDown={handleKeyDown} // Add the onKeyDown event listener
+          onKeyDown={handleKeyDown}
           placeholder="Type your message..."
         />
-        <button onClick={handleSendMessage}>Send</button>
+        <MicIcon sx={{ fontSize: 30 }}/>
       </div>
     </>
   );
