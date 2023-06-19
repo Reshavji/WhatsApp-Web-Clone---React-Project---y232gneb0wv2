@@ -39,7 +39,7 @@ const ChatInterface = () => {
     <div className="container">
       <div id='chatcontainer'>
         <div className="grid-container">
-          <div className="grid-item">
+          <div className="grid-item1">
             <div className="header">
               <img src="https://static-prod.adweek.com/wp-content/uploads/2023/01/WhatsApp-Avatar-Profile-Photo-Hero-652x367.png" alt="user" />
               <div className="iconcontainer">
@@ -65,9 +65,10 @@ const ChatInterface = () => {
             )}
             <Contactbox groups={groups} />
           </div>
-          <div className="grid-item">
+          <div className="grid-item2">
+           
             <div className="header">
-              <img src="https://static-prod.adweek.com/wp-content/uploads/2023/01/WhatsApp-Avatar-Profile-Photo-Hero-652x367.png" alt="user" />
+              <img id='avatar' src="https://static-prod.adweek.com/wp-content/uploads/2023/01/WhatsApp-Avatar-Profile-Photo-Hero-652x367.png" alt="user" />
               <div className="iconcontainer">
                 <SearchIcon sx={{ fontSize: 30 }} />
                 <MoreVertIcon sx={{ fontSize: 30 }} />
