@@ -3,6 +3,7 @@ import whatsAppLogo from "../images/whatsapp-symbol.svg";
 import GoogleIcon from "../images/google-icon.svg";
 import { auth, provider } from "../config/firebase";
 import "./Login.css";
+import Animation from "./Animation";
 
 const Login = () => {
   const containerRef = useRef();
@@ -16,6 +17,7 @@ const Login = () => {
 
   return (
     <div className="login" id="login">
+      <Animation />
       <div ref={containerRef} className="login__container">
         <img src={whatsAppLogo} alt="WhatsAppLogo" />
         <h1>Sign In To WhatsApp</h1>
