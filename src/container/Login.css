@@ -1,5 +1,6 @@
 .login {
-  align-items: center;
+  align-items: center; 
+  overflow: hidden;
   justify-content: center;
   background-image: url("https://phoneky.co.uk/thumbs/wallpapers/2022/p2/abstract/20/wal4ab28.jpg");
 }
@@ -7,7 +8,6 @@
   display: flex;
   flex-direction: column;
   padding: 2em 4em;
-  overflow: hidden;
 }
 .login__container > img {
   object-fit: contain;
