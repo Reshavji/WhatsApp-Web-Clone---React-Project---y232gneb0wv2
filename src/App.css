@@ -32,8 +32,8 @@ a {
 @media screen and (min-width: 0px) and (max-width: 1440px) {
   .app__container,
   .login {
-    height: 96vh;
-    width: 96vw;
+    height: 90vh;
+    width: 95vw;
     flex-direction: column;
   }
 }
