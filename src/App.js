@@ -37,7 +37,6 @@ function App() {
           <Switch>
             <Route exact path="/" />
             <Route path="/rooms/:roomId" component={Chat} >
-              <Chat />
             </Route>
           </Switch>
         </div>
