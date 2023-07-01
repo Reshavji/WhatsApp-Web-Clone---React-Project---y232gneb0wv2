@@ -35,8 +35,10 @@ function App() {
         <div className="app__container">
           <Sidebar />
           <Switch>
-            <Route exact path="/" component={<Chat />} />
-            <Route path="/rooms/:roomId" component={Chat} />
+            <Route exact path="/" />
+            <Route path="/rooms/:roomId" component={Chat} >
+              <Chat />
+            </Route>
           </Switch>
         </div>
       )}
