@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
-import { AttachFile, Mic, Mood, MoreVert, Search } from '@material-ui/icons';
+import { AttachFile, Send,Mood, MoreVert, Search } from '@material-ui/icons';
 import { useParams } from 'react-router-dom';
 import './Chat.css';
 import Message from './Message';
@@ -19,6 +19,10 @@ function Chat() {
   const [{ user }] = useStateValue();
   const { roomId } = useParams();
   const messageRef = useRef();
+  const iconStyle = {
+    color: '#00a884', // Set the color you want here
+    fontSize: 30, // Optional, adjust the size if needed
+  };
 
   useMutationObserver(messageRef, () => {
     messageRef.current.scrollTop = messageRef.current.scrollHeight;
@@ -111,7 +115,7 @@ function Chat() {
           </button>
         </form>
         <IconButton>
-          <Mic className="chat__footerMic" />
+          <Send className="chat__footerMic" style={iconStyle} onClick={sendMessage} />
         </IconButton>
       </div>
     </div>
