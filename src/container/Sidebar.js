@@ -5,13 +5,16 @@ import SidebarRow from './SidebarRow';
 import db, { auth } from '../config/firebase';
 import { useStateValue } from '../Context/StateProvider';
 import './Sidebar.css';
+import Profile from './Profile'; // Import the newly created Profile component
 
 const ITEM_HEIGHT = 54;
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
   const [{ user }] = useStateValue();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [profileOpen, setProfileOpen] = useState(false); // State for the Profile dialog
+
   const open = Boolean(anchorEl);
 
   useEffect(() => {
@@ -37,9 +40,21 @@ function Sidebar() {
       });
     }
   };
+
   const signout = () => {
     setAnchorEl(null);
     auth.signOut();
+  };
+
+  // Function to open the Profile dialog
+  const openProfile = () => {
+    setProfileOpen(true);
+    setAnchorEl(null); // Close the main menu after opening the Profile dialog
+  };
+
+  // Function to close the Profile dialog
+  const closeProfile = () => {
+    setProfileOpen(false);
   };
 
   return (
@@ -83,7 +98,7 @@ function Sidebar() {
               }}
             >
               <MenuItem onClick={createChat}>Create A Room</MenuItem>
-              <MenuItem onClick={() => setAnchorEl(null)}>Profile</MenuItem>
+              <MenuItem onClick={openProfile}>Profile</MenuItem> {/* Updated to openProfile */}
               <MenuItem onClick={signout}>Log out</MenuItem>
             </Menu>
           </Grid>
@@ -100,6 +115,9 @@ function Sidebar() {
           <SidebarRow key={id} id={id} name={data?.name} />
         ))}
       </div>
+
+      {/* Render the Profile component */}
+      <Profile open={profileOpen} onClose={closeProfile} />
     </div>
   );
 }
