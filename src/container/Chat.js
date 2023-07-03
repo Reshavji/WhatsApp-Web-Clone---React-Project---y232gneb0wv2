@@ -71,7 +71,7 @@ function Chat() {
         <Avatar src={messages[messages.length - 1]?.data?.photoURL} />
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          <p>{messages[0] && timeFromNow(messages[messages.length - 1]?.data?.timestamp)}</p>
+          <p>online</p>
         </div>
         <div className="chat__headerIcons">
           <IconButton>
