@@ -5,14 +5,6 @@ import db from '../config/firebase';
 import { Link } from 'react-router-dom';
 import { timeFromNow } from '../utils/utils';
 
-function truncateMessage(message, maxLength) {
-  if (message.split(' ').length > maxLength) {
-    const words = message.split(' ');
-    return words.slice(0, maxLength).join(' ') + '...';
-  }
-  return message;
-}
-
 function SidebarRow({ name, id }) {
   const [messages, setMessages] = useState([]);
 
@@ -36,11 +28,9 @@ function SidebarRow({ name, id }) {
               <h3 className="sidebarRow__name">{name}</h3>
             </Grid>
             <Grid item>
-              <p className="sidebarRow__message">
-                {`${messages[0] ? messages[0]?.name + ': ' : ''} ${messages[0]
-                  ? truncateMessage(messages[0]?.message, 3)
-                  : ''}`}
-              </p>
+              <p className="sidebarRow__message">{`${messages[0] ? messages[0]?.name + ': ' : ''} ${
+                messages[0] ? messages[0]?.message : ''
+              }`}</p>
             </Grid>
           </Grid>
           <Grid item md={4} sm={6}>

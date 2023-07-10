@@ -9,6 +9,7 @@ import { useStateValue } from '../Context/StateProvider';
 import firebase from 'firebase';
 import useMutationObserver from '@rooks/use-mutation-observer';
 import EmojiPicker from 'emoji-picker-react';
+import { timeFromNow } from '../utils/utils';
 
 function Chat() {
   const [input, setInput] = useState('');
@@ -70,7 +71,7 @@ function Chat() {
         <Avatar src={messages[messages.length - 1]?.data?.photoURL} />
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          <p>online</p>
+          <p>{messages[0] && timeFromNow(messages[messages.length - 1]?.data?.timestamp)}</p>
         </div>
         <div className="chat__headerIcons">
           <IconButton>

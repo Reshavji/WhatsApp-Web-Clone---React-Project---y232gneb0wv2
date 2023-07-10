@@ -29,7 +29,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
-@media screen and (min-width: 0px) and (max-width: 720px) {
+@media screen and (min-width: 0px) and (max-width: 1440px) {
   .app__container,
   .login {
     height: 90vh;
