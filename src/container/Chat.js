@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
-import { AttachFile, Send,Mood, MoreVert, Search } from '@material-ui/icons';
+import { Send,Mood, MoreVert, Search } from '@material-ui/icons';
 import { useParams } from 'react-router-dom';
 import './Chat.css';
 import Message from './Message';
@@ -71,7 +71,7 @@ function Chat() {
         <Avatar src={messages[messages.length - 1]?.data?.photoURL} />
         <div className="chat__headerInfo">
           <h3>{roomName}</h3>
-          <p>{messages[0] && timeFromNow(messages[messages.length - 1]?.data?.timestamp)}</p>
+          <p>online</p>
         </div>
         <div className="chat__headerIcons">
           <IconButton>
@@ -99,9 +99,6 @@ function Chat() {
       <div className="chat__footer">
         <IconButton onClick={() => setClicked((clicked) => !clicked)}>
           <Mood className="chat__footerMood" />
-        </IconButton>
-        <IconButton>
-          <AttachFile className="chat__footerAttach" />
         </IconButton>
         <form>
           <input

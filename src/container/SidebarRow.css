@@ -29,6 +29,7 @@
 .sidebarRow__time {
   font-size: 0.8rem;
   color: #ababab;
+  overflow: hidden !important;
 }
 .sidebarRow__time {
   color: lightgray;

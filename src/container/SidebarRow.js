@@ -5,22 +5,40 @@ import db from '../config/firebase';
 import { Link } from 'react-router-dom';
 import { timeFromNow } from '../utils/utils';
 
+function truncateMessage(message, maxLength) {
+  if (message.split(' ').length > maxLength) {
+    const words = message.split(' ');
+    return words.slice(0, maxLength).join(' ') + '...';
+  }
+  return message;
+}
+
 function SidebarRow({ name, id }) {
-  const [messages, setMessages] = useState([]);
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    db.collection('rooms')
+    const unsubscribe = db
+      .collection('rooms')
       .doc(id)
       .collection('messages')
       .orderBy('timestamp', 'desc')
-      .onSnapshot((snapshot) => setMessages(snapshot.docs.map((doc) => doc.data())));
+      .limit(1)
+      .onSnapshot((snapshot) => {
+        if (!snapshot.empty) {
+          const latestMessage = snapshot.docs[0].data();
+          setMessage(latestMessage);
+        }
+      });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
   }, [id]);
 
   return (
     <Link to={`/rooms/${id}`}>
       <Grid container className="sidebarRow">
         <Grid className="sidebarRow__image" item md={2} sm={2}>
-          <Avatar src={messages[0]?.photoURL} />
+          <Avatar src={message?.photoURL} />
         </Grid>
         <Grid className="sidebarRow__info" container item md={10} sm={10}>
           <Grid container item direction="column" md={8} sm={6}>
@@ -28,14 +46,16 @@ function SidebarRow({ name, id }) {
               <h3 className="sidebarRow__name">{name}</h3>
             </Grid>
             <Grid item>
-              <p className="sidebarRow__message">{`${messages[0] ? messages[0]?.name + ': ' : ''} ${
-                messages[0] ? messages[0]?.message : ''
-              }`}</p>
+              <p className="sidebarRow__message">
+                {`${message ? message?.name + ': ' : ''} ${
+                  message ? truncateMessage(message?.message, 3) : ''
+                }`}
+              </p>
             </Grid>
           </Grid>
           <Grid item md={4} sm={6}>
             <p className="sidebarRow__time">
-              {messages[0] ? timeFromNow(messages[0]?.timestamp) : ' '}
+              {message ? timeFromNow(message?.timestamp) : ' '}
             </p>
           </Grid>
         </Grid>
