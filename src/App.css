@@ -36,7 +36,10 @@ a {
     width: 95vw;
     flex-direction: column;
   }
-  .error{
+  .sidebar{
+    height: 50vh;
+  }
+    .error{
     margin-top: 15% !important;
     margin-left: 33% !important;
   }
