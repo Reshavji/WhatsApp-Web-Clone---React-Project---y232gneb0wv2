@@ -36,6 +36,10 @@ a {
     width: 95vw;
     flex-direction: column;
   }
+  .error{
+    margin-top: 15% !important;
+    margin-left: 33% !important;
+  }
 }
 ::-webkit-scrollbar {
   width: 6px;
