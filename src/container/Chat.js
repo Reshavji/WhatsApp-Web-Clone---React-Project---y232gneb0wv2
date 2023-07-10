@@ -9,7 +9,6 @@ import { useStateValue } from '../Context/StateProvider';
 import firebase from 'firebase';
 import useMutationObserver from '@rooks/use-mutation-observer';
 import EmojiPicker from 'emoji-picker-react';
-import { timeFromNow } from '../utils/utils';
 
 function Chat() {
   const [input, setInput] = useState('');
