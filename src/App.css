@@ -37,7 +37,7 @@ a {
     flex-direction: column;
   }
   .sidebar{
-    height: 50vh;
+    height: 40vh;
   }
     .error{
     margin-top: 15% !important;
