@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Avatar, Grid, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { MoreVert, Search } from '@material-ui/icons';
 import SidebarRow from './SidebarRow';
@@ -16,7 +16,7 @@ function Sidebar() {
   const [profileOpen, setProfileOpen] = useState(false);
   const [filteredRooms, setFilteredRooms] = useState([]);
   const [searchError, setSearchError] = useState(false);
-
+  const searchRef = useRef(null);
   const open = Boolean(anchorEl);
 
   useEffect(() => {
@@ -66,6 +66,21 @@ function Sidebar() {
     setFilteredRooms(filtered);
     setSearchError(filtered.length === 0); // Set search error if no results found
   };
+  const handleOutsideClick = (e) => {
+    if (searchRef.current && !searchRef.current.contains(e.target)) {
+      setFilteredRooms([]);
+      setSearchError(false);
+      document.getElementById('search').value = ''; // Clear the search bar
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
+
 
   return (
     <div className="sidebar">
@@ -111,7 +126,7 @@ function Sidebar() {
         <div className="sidebar__searchContainer">
           <Search />
           <input type="text" id='search' onChange={handleSearch} placeholder="Search or Start New Chat" />
-          {searchError && <p>No results found</p>}
+          {searchError && <p className='error'>No results found</p>}
         </div>
       </div>
       <div className="sidebar__Chats">

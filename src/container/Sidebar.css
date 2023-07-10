@@ -50,3 +50,10 @@
   background-color: #fff;
   overflow-y: scroll;
 }
+.error{
+  position: absolute;
+  margin-top:8%;
+  margin-left: 9%;
+  color: red;
+  font-size: 18px;
+}
