@@ -19,8 +19,8 @@ function Chat() {
   const { roomId } = useParams();
   const messageRef = useRef();
   const iconStyle = {
-    color: '#00a884', // Set the color you want here
-    fontSize: 30, // Optional, adjust the size if needed
+    color: '#00a884', 
+    fontSize: 30, 
   };
 
   useMutationObserver(messageRef, () => {
