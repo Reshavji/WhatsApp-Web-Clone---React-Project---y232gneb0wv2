@@ -123,7 +123,7 @@ function Sidebar() {
         </Grid>
       </Grid>
       <div className="sidebar__search">
-        <div className="sidebar__searchContainer">
+        <div className="sidebar__searchContainer" ref={searchRef}>
           <Search />
           <input type="text" id='search' onChange={handleSearch} placeholder="Search or Start New Chat" />
           {searchError && <p className='error'>No results found</p>}
