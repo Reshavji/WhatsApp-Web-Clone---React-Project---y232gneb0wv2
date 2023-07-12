@@ -66,17 +66,18 @@ function Sidebar() {
     setFilteredRooms(filtered);
     setSearchError(filtered.length === 0); // Set search error if no results found
   };
-  const handleOutsideClick = (e) => {
+ const handleOutsideClick = (e) => {
   if (
     searchRef.current &&
     !searchRef.current.contains(e.target) &&
-    !e.target.classList.contains('sidebar__row')
+    (filteredRooms.length === 0 || searchError)
   ) {
     setFilteredRooms([]);
     setSearchError(false);
     document.getElementById('search').value = ''; // Clear the search bar
   }
 };
+
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
