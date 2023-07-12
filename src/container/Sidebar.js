@@ -66,11 +66,12 @@ function Sidebar() {
     setFilteredRooms(filtered);
     setSearchError(filtered.length === 0); // Set search error if no results found
   };
- const handleOutsideClick = (e) => {
+const handleOutsideClick = (e) => {
   if (
     searchRef.current &&
     !searchRef.current.contains(e.target) &&
-    (filteredRooms.length === 0 || searchError)
+    filteredRooms.length === 0 &&
+    searchError
   ) {
     setFilteredRooms([]);
     setSearchError(false);
@@ -78,14 +79,17 @@ function Sidebar() {
   }
 };
 
+useEffect(() => {
+  const handleDocumentClick = (e) => {
+    handleOutsideClick(e);
+  };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
-
+  document.addEventListener('mousedown', handleDocumentClick);
+  
+  return () => {
+    document.removeEventListener('mousedown', handleDocumentClick);
+  };
+}, []);
 
   return (
     <div className="sidebar">
