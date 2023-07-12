@@ -89,7 +89,7 @@ function Sidebar() {
     return () => {
       document.removeEventListener('mousedown', handleDocumentClick);
     };
-  }, []);
+  });
 
   return (
     <div className="sidebar">
