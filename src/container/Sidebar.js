@@ -66,18 +66,28 @@ function Sidebar() {
     setFilteredRooms(filtered);
     setSearchError(filtered.length === 0); // Set search error if no results found
   };
- const handleOutsideClick = (e) => {
-    if (searchRef.current && !searchRef.current.contains(e.target)) {
+  const handleOutsideClick = (e) => {
+    if (
+      searchRef.current &&
+      !searchRef.current.contains(e.target) &&
+      filteredRooms.length === 0 &&
+      searchError
+    ) {
       setFilteredRooms([]);
       setSearchError(false);
       document.getElementById('search').value = ''; // Clear the search bar
     }
   };
-
+  
   useEffect(() => {
-    document.addEventListener('mousedown', handleOutsideClick);
+    const handleDocumentClick = (e) => {
+      handleOutsideClick(e);
+    };
+  
+    document.addEventListener('mousedown', handleDocumentClick);
+    
     return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('mousedown', handleDocumentClick);
     };
   }, []);
 
