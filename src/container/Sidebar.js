@@ -67,12 +67,16 @@ function Sidebar() {
     setSearchError(filtered.length === 0); // Set search error if no results found
   };
   const handleOutsideClick = (e) => {
-    if (searchRef.current && !searchRef.current.contains(e.target)) {
-      setFilteredRooms([]);
-      setSearchError(false);
-      document.getElementById('search').value = ''; // Clear the search bar
-    }
-  };
+  if (
+    searchRef.current &&
+    !searchRef.current.contains(e.target) &&
+    !e.target.classList.contains('sidebar__row')
+  ) {
+    setFilteredRooms([]);
+    setSearchError(false);
+    document.getElementById('search').value = ''; // Clear the search bar
+  }
+};
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
