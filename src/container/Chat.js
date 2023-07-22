@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
-import { Send,Mood, MoreVert, Search } from '@material-ui/icons';
+import { Send,Mood} from '@material-ui/icons';
 import { useParams } from 'react-router-dom';
 import './Chat.css';
 import Message from './Message';
@@ -73,12 +73,6 @@ function Chat() {
           <p>online</p>
         </div>
         <div className="chat__headerIcons">
-          <IconButton>
-            <Search className="chat__headerIcon" />
-          </IconButton>
-          <IconButton>
-            <MoreVert className="chat__headerIcon" />
-          </IconButton>
         </div>
       </div>
       <div className="chat__body" ref={messageRef}>
