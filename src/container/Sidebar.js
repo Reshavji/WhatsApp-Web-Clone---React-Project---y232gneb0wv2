@@ -43,35 +43,6 @@ function Sidebar() {
     }
   };
 
-  const deleteRoom = async (roomId) => {
-    try {
-      // Delete all messages inside the room
-      const messagesSnapshot = await db
-        .collection('rooms')
-        .doc(roomId)
-        .collection('messages')
-        .get();
-  
-      const batch = db.batch();
-  
-      messagesSnapshot.forEach((doc) => {
-        console.log(doc);
-        batch.delete(doc.ref);
-        
-      });
-  
-      await batch.commit();
-  
-      // Delete the room document itself
-      await db.collection('rooms').doc(roomId).delete();
-  
-      console.log('Room and messages successfully deleted!');
-    } catch (error) {
-      console.error('Error deleting room and messages:', error);
-    }
-  };
-  
-
   const signout = () => {
     setAnchorEl(null);
     auth.signOut();
@@ -87,7 +58,6 @@ function Sidebar() {
   const closeProfile = () => {
     setProfileOpen(false);
   };
-
   const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
     const filtered = rooms.filter((room) =>
@@ -96,7 +66,6 @@ function Sidebar() {
     setFilteredRooms(filtered);
     setSearchError(filtered.length === 0); // Set search error if no results found
   };
-
   const handleOutsideClick = (e) => {
     if (
       searchRef.current &&
@@ -109,21 +78,18 @@ function Sidebar() {
       document.getElementById('search').value = ''; // Clear the search bar
     }
   };
-
+  
   useEffect(() => {
     const handleDocumentClick = (e) => {
       handleOutsideClick(e);
     };
-
+  
     document.addEventListener('mousedown', handleDocumentClick);
-
+    
     return () => {
       document.removeEventListener('mousedown', handleDocumentClick);
     };
   });
-  const removeRoomFromState = (roomId) => {
-    setRooms((prevRooms) => prevRooms.filter((room) => room.id !== roomId));
-  };
 
   return (
     <div className="sidebar">
@@ -139,8 +105,8 @@ function Sidebar() {
         <Grid container item sm={6}>
           <Grid item sm={3} />
           <Grid item sm={2} />
-          <Grid item sm={2} />
-          <Grid item sm={2} />
+        <Grid item sm={2} />
+        <Grid item sm={2} />
           <Grid item sm={3}>
             <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
               <MoreVert className="sidebar__icon" />
@@ -175,19 +141,11 @@ function Sidebar() {
       <div className="sidebar__Chats">
         {filteredRooms.length > 0 || searchError ? (
           filteredRooms.map(({ id, data }) => (
-            <SidebarRow key={id} id={id} name={data?.name} onDelete={() => deleteRoom(id)}  />
+            <SidebarRow key={id} id={id} name={data?.name} />
           ))
         ) : (
           rooms.map(({ id, data }) => (
-            <SidebarRow
-              key={id}
-              id={id}
-              name={data?.name}
-              onDelete={() => {
-                deleteRoom(id);
-                removeRoomFromState(id);
-              }}
-            />
+            <SidebarRow key={id} id={id} name={data?.name} />
           ))
         )}
       </div>
