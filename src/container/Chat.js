@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Avatar, IconButton } from '@material-ui/core';
-import { Send,Mood} from '@material-ui/icons';
+import { Send, Mood } from '@material-ui/icons';
 import { useParams } from 'react-router-dom';
 import './Chat.css';
 import Message from './Message';
@@ -19,8 +19,8 @@ function Chat() {
   const { roomId } = useParams();
   const messageRef = useRef();
   const iconStyle = {
-    color: '#00a884', // Set the color you want here
-    fontSize: 30, // Optional, adjust the size if needed
+    color: '#00a884',
+    fontSize: 30,
   };
 
   useMutationObserver(messageRef, () => {
@@ -51,15 +51,21 @@ function Chat() {
   const sendMessage = (e) => {
     e.preventDefault();
     if (input.trim()) {
-      db.collection('rooms').doc(roomId).collection('messages').add({
-        name: user?.displayName,
-        email: user?.email,
-        message: input,
-        photoURL: user?.photoURL,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      });
+      db.collection('rooms')
+        .doc(roomId)
+        .collection('messages')
+        .add({
+          name: user?.displayName,
+          email: user?.email,
+          message: input,
+          photoURL: user?.photoURL,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(() => setInput(''))
+        .catch((error) => {
+          console.error('Error sending message:', error);
+        });
     }
-    setInput('');
   };
 
   const emojiHandler = (e, emoji) => setInput((prevInput) => prevInput + emoji.emoji);
@@ -72,13 +78,13 @@ function Chat() {
           <h3>{roomName}</h3>
           <p>online</p>
         </div>
-        <div className="chat__headerIcons">
-        </div>
+        <div className="chat__headerIcons"></div>
       </div>
       <div className="chat__body" ref={messageRef}>
         {messages.map(({ id, data }) => (
           <Message
             key={id}
+            messageId={id} // Pass the message id as a prop to the Message component
             name={data.name}
             email={data.email}
             message={data.message}
@@ -101,11 +107,11 @@ function Chat() {
             placeholder="Type a message"
           />
           <button style={{ display: 'none' }} onClick={sendMessage} type="submit">
-            Send Messege
+            Send Message
           </button>
         </form>
-        <IconButton>
-          <Send className="chat__footerMic" style={iconStyle} onClick={sendMessage} />
+        <IconButton onClick={sendMessage} >
+          <Send className="chat__footerMic" style={iconStyle} />
         </IconButton>
       </div>
     </div>
