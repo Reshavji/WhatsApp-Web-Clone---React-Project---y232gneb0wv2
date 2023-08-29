@@ -16,6 +16,9 @@
  flex-direction: row;
  
 }
+.MuiIconButton-root {
+  padding: 0px !important;
+}
 .message:first-of-type {
   margin-top: 0;
 }
