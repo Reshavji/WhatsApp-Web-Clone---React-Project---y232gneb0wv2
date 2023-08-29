@@ -1,5 +1,5 @@
 # Whats App Web Clone
-![image](https://github.com/Reshavji/WhatsApp-Web-Clone---React-Project---y232gneb0wv2/assets/116823969/e46b5e52-b39d-450e-a11f-a2163a4bf3bb)# Getting Started with Create React App
+![image](https://github.com/Reshavji/WhatsApp-Web-Clone---React-Project---y232gneb0wv2/assets/116823969/e46b5e52-b39d-450e-a11f-a2163a4bf3bb)
 
 # Start
 Open [Whats App Web](https://whatsappps.netlify.app/) to view it in your browser.
