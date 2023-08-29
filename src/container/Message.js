@@ -13,7 +13,7 @@ function Message({ name, message, timestamp, email, messageId }) {
   const { roomId } = useParams();
   const [num, setNum] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [showDeleteOption, setShowDeleteOption] = useState(false); // Added this line
+  const [showDeleteOption, setShowDeleteOption] = useState(true); // Added this line
 
   useEffect(() => {
     setNum(Math.floor(Math.random() * colors.length));
@@ -49,8 +49,6 @@ function Message({ name, message, timestamp, email, messageId }) {
   return (
     <div
       className={`message ${user?.email === email ? 'receiver' : ''}`}
-      onMouseEnter={() => setShowDeleteOption(true)}
-      onMouseLeave={() => setShowDeleteOption(false)}
     >
       <div className="message__content"> {/* Added a wrapper div */}
         <p className="message__name" style={{ color: colors[num] }}>
